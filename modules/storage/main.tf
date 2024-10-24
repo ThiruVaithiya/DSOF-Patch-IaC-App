@@ -14,7 +14,7 @@ resource "aws_s3_bucket_public_access_block" "insecure-bucket" {
   versioning {
     enabled = true
   }
-# }
+}
 
 # Add versioning to the S3 bucket
 resource "aws_s3_bucket_versioning" "my_bucket_versioning" {
