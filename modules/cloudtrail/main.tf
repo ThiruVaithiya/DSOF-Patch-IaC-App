@@ -1,6 +1,7 @@
 resource "aws_kms_key" "my_kms_key" {
   description = "KMS Key for encryption"
   key_usage   = "ENCRYPT_DECRYPT"
+  enable_key_rotation = true
 
   tags = {
     Name = "snyk-key"
