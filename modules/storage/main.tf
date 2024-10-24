@@ -13,6 +13,15 @@ resource "aws_s3_bucket_public_access_block" "insecure-bucket" {
   }
 # }
 
+# Add versioning to the S3 bucket
+resource "aws_s3_bucket_versioning" "my_bucket_versioning" {
+  bucket = aws_s3_bucket_public_access_block.my_bucket.bucket
+  versioning_configuration {
+    status = "Enabled"
+    mfa_delete = true
+  }
+}
+
 resource "aws_ebs_volume" "example" {
   availability_zone = "us-east-1a"
   size              = 20
