@@ -7,12 +7,20 @@ resource "aws_s3_bucket" "insecure-bucket" {
 #   block_public_policy     = true
 #   ignore_public_acls      = true
 #   restrict_public_buckets = true
+  versioning {
+    enabled = true
+    mfa_delete = true
+  }
+  logging {
+    target_bucket = aws_s3_bucket.insecure-bucket
+    target_prefix = "log/"
+  }
 # }
 
 resource "aws_ebs_volume" "example" {
   availability_zone = "us-east-1a"
   size              = 20
-  encrypted         = false
+  encrypted         = true
   tags = {
     Name = "insecure"
   }
