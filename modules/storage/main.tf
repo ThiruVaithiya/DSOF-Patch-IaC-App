@@ -22,9 +22,10 @@ resource "aws_s3_bucket_versioning" "my_bucket_versioning" {
   bucket = aws_s3_bucket.insecure-bucket.id
    
     # MFA Delete must be set to Enabled
-    mfa_delete {
-      enabled = true
-    }
+   versioning {
+    enabled = true
+    mfa_delete = true
+  }
   }
 }
 
