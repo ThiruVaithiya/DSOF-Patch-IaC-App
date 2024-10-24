@@ -20,11 +20,7 @@ resource "aws_s3_bucket_public_access_block" "insecure-bucket" {
 
 resource "aws_s3_bucket_versioning" "my_bucket_versioning" {
   bucket = aws_s3_bucket.insecure-bucket.id
-
-  # Enable versioning
-  versioning_configuration {
-    status = "Enabled"
-    
+   
     # MFA Delete must be set to Enabled
     mfa_delete {
       enabled = true
