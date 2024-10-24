@@ -15,6 +15,10 @@ resource "aws_s3_bucket_public_access_block" "insecure-bucket" {
     target_bucket = aws_s3_bucket.logging-bucket.id
     target_prefix = "log/"
   }
+  versioning {
+    enabled = true
+    mfa_delete = true
+  }
 }
 
 resource "aws_s3_bucket_versioning" "my_bucket_versioning" {
