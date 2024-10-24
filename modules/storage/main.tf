@@ -7,14 +7,15 @@ resource "aws_s3_bucket_public_access_block" "insecure-bucket" {
    block_public_policy     = true
    ignore_public_acls      = true
    restrict_public_buckets = true
-  logging {
-    target_bucket = aws_s3_bucket.insecure-bucket.id  # Bucket where logs will be stored
-    target_prefix = "log/"
-  }
-  versioning {
+   versioning {
     enabled = true
     mfa_delete = true
   }
+   logging {
+    target_bucket = aws_s3_bucket.insecure-bucket.id
+    target_prefix = "log/"
+  }
+
 }
 
 resource "aws_ebs_volume" "example" {
