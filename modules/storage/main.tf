@@ -11,10 +11,6 @@ resource "aws_s3_bucket_public_access_block" "insecure-bucket" {
     enabled = true
     mfa_delete = true
   }
-  logging {
-    target_bucket = aws_s3_bucket.insecure-bucket
-    target_prefix = "log/"
-  }
 # }
 
 resource "aws_ebs_volume" "example" {
