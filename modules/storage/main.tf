@@ -23,9 +23,7 @@ resource "aws_s3_bucket_versioning" "my_bucket_versioning" {
     enabled = true
     mfa_delete = true
   }
-  }
 }
-
 resource "aws_ebs_volume" "example" {
   availability_zone = "us-east-1a"
   size              = 20
